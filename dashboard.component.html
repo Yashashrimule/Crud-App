@@ -1,0 +1,58 @@
+<div class="header">
+    <h2>Welcome</h2>
+    <div>
+        <button (click)="showForm()">Add Member</button>
+        <button (click)="logout()">Logout</button>
+    </div>
+</div>
+<div class="background">
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Fullname</th>
+                    <th>Email Address</th>
+                    <th>Date Of Birth</th>
+                    <th>Gender</th>
+                    <th>Mobile No</th>
+                    <th>Fees</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let student of studentArr">
+                    <td>{{student.fullname}}</td>
+                    <td>{{student.emailAdd}}</td>
+                    <td>{{student.dob | date}}</td>
+                    <td>{{student.gender}}</td>
+                    <td>{{student.mobile}}</td>
+                    <td>{{student.fees | currency:'INR'}}</td>
+                    <td class="action">
+                        <button (click)="editStudent(student.id)"><i class="fa-solid fa-user-pen"></i></button>
+                        <button (click)="deleteStudent(student.id)"><i class="fa-solid fa-trash-can"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="container" [ngStyle]="{'display':show ? 'block' : 'none'}">
+        <div class="title-field">
+            <h2>{{title}}</h2>
+        </div>
+        <form [formGroup]="fb" (ngSubmit)="addStudent()">
+            <input type="text" placeholder="Fullname" formControlName="fullname">
+            <input type="email" placeholder="Email Address" formControlName="emailAdd">
+            <input type="date" formControlName="dob">
+            <select formControlName="gender">
+                <option selected value="">Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+            <input type="text" placeholder="Mobile No" formControlName="mobile">
+            <input type="number" placeholder="Course Fees" formControlName="fees">
+            <input type="submit" [value]="title">
+            <button>Close</button>
+        </form>
+    </div>    
+</div>
+

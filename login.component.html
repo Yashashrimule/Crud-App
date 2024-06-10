@@ -1,0 +1,22 @@
+<div class="container">
+    <img src="https://static.vecteezy.com/system/resources/previews/001/838/402/original/template-banner-web-design-background-blue-and-white-square-shape-with-shadow-vector.jpg">
+    <div class="login">
+        <div class="title-field">
+            <i class="fa-solid fa-rocket"></i>
+            <h1>Login</h1>
+            <p>Provide your credentials to login !!</p>
+        </div>
+        <form [formGroup]="fb" (ngSubmit)="onLogin()">
+            <div class="input-field">
+                <input type="text" placeholder="Full Name" formControlName="fullname">
+            </div>
+            <div class="input-field">
+                <input type="email" placeholder="Username" formControlName="username">
+            </div>
+            <div class="input-field">
+                <input type="password" placeholder="Password" formControlName="password">
+            </div>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+</div>
